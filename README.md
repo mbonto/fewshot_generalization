@@ -29,6 +29,8 @@ Our code is built upon the trained models of [SimpleShot: Revisiting Nearest-Nei
 #### b. Semi-supervised setting
 #### c. Unsupervised setting
 
+### 6. Case study on mini-ImageNet
+
 ## Contact
 Please contact us if there are any problems.
 
