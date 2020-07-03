@@ -126,9 +126,8 @@ def nearest_centroid_classifier(train_set, train_labels, test_set, test_labels, 
 
 def tikhonov_label_propagation(train_set, train_labels, test_set, test_labels, params, loss):
     import diffusion_graph
-    import baseline_graph
     import monitoring
-    loss_fn = baseline_graph.cosine_loss
+    loss_fn = diffusion_graph.cosine_loss
     x_latent = torch.cat([train_set, test_set])
     weights = diffusion_graph.weights_from_loss_fn(x_latent, loss_fn,
                                                    params.num_neighbors, regular=True,

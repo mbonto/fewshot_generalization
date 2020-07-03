@@ -14,8 +14,7 @@ import networkx as nx
 import community as louvain
 import networkx.algorithms.community as commu
 from sklearn import manifold
-from diffusion_graph import edges_from_loss_fn
-from baseline_graph import cosine_loss
+from diffusion_graph import edges_from_loss_fn, cosine_loss
 from loaders import get_all_pairs_datasets
 from loaders import split_train_test
 from loaders import get_train_test_datasets_labels

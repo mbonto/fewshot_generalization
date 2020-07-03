@@ -25,7 +25,7 @@ def compute_dot(graph_name_1, graph_name_2):
     return coeff
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Graph Mean Shift.')
+    parser = argparse.ArgumentParser(description='Load dots')
     parser.add_argument('--graph_name_1', type=str)
     parser.add_argument('--graph_name_2', type=str)
     args = parser.parse_args()
