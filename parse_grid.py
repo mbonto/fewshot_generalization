@@ -46,7 +46,7 @@ def parse_args(modes):
     parser.add_argument('--n_way', default=5, type=int, help='number of classes.')
     parser.add_argument('--n_val', default=595, type=int, help='number of validation examples.')
     parser.add_argument('--n_shot', default=5, type=int, help='number of training examples.')
-    parser.add_argument('--dot_name', default='myriam-densenet/novel/louvain_dendrogram_communities_1_20.dot')
+    parser.add_argument('--dot_name', default='densenet-m/novel/louvain_dendrogram_communities_1_20.dot')
     parser.add_argument('--arena', action='store_true')
     sanity_check_parser = parser.add_mutually_exclusive_group(required=True)
     sanity_check_parser.add_argument('--single', dest='training_type', action='store_const', const='single')
