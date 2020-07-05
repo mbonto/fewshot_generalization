@@ -281,7 +281,7 @@ def parse_args():
     parser.add_argument('--n_query', default=5, type=int, help='number of test examples, which is also the number of additional unlabeled samples in some settings.')
     parser.add_argument('--n_neighbor', default=15, type=int, help='number of nearest neigbors kept in the cosine similarity graph')
     parser.add_argument('--p', type=float, help='indicate the imbalance number of unlabeled samples par class: None or float number between 0 and 1. None means no imbalance, float indicates the proportion of samples in one class with respect to the other classes.')
-    parser.add_argument('--n_run', default=10, type=int, help='number of tasks')
+    parser.add_argument('--n_run', default=1000, type=int, help='number of tasks')
     return parser.parse_args()
 
 
