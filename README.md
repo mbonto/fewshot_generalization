@@ -18,11 +18,17 @@ In the context of few-shot learning, one cannot evaluate generalization using va
 Our code is built upon the pretrained backbones of [SimpleShot: Revisiting Nearest-Neighbor Classification for Few-Shot Learning](https://arxiv.org/pdf/1911.04623.pdf) (a) and [Charting the Right Manifold: Manifold Mixup for Few-shot Learning](https://openaccess.thecvf.com/content_WACV_2020/papers/Mangla_Charting_the_Right_Manifold_Manifold_Mixup_for_Few-shot_Learning_WACV_2020_paper.pdf) (b).
 
 We consider three pretrained backbones.
+
 **wideresnet** -- Wide Residual Network trained on mini-ImageNet from (b).
+
 **densenet-m** -- Dense Network trained on mini-ImageNet from (a).
+
 **densenet-t** -- Dense Network trained on tiered-ImageNet from (a).
 
-We use these backbones to extract features of new data samples. The features of the following classes can be downloaded from https://drive.google.com/drive/folders/1VSma8cHxmPafjg3bjdWVSdIydiALNVb9?usp=sharing.
+We use these backbones to extract features of new data samples. The features of the following classes can be downloaded from
+
+https://drive.google.com/drive/folders/1VSma8cHxmPafjg3bjdWVSdIydiALNVb9?usp=sharing.
+
 wideresnet/test.pkl contains the features of 20 novel classes of mini-ImageNet.
 densenet-m/test.pkl contains the feature of 20 novel classes of mini-ImageNet.
 densent-t/test.pkl contains the feature 160 novel classes of tiered-ImageNet.
