@@ -25,13 +25,10 @@ We consider three pretrained backbones.
 
 **densenet-t** -- Dense Network trained on tiered-ImageNet from (a).
 
-We use these backbones to extract features of new data samples. The features of the following classes can be downloaded from
-
-https://drive.google.com/drive/folders/1VSma8cHxmPafjg3bjdWVSdIydiALNVb9?usp=sharing.
-
-wideresnet/test.pkl contains the features of 20 novel classes of mini-ImageNet.
-densenet-m/test.pkl contains the feature of 20 novel classes of mini-ImageNet.
-densent-t/test.pkl contains the feature 160 novel classes of tiered-ImageNet.
+We use these backbones to extract features of new data samples. The features of the following classes can be downloaded from https://drive.google.com/drive/folders/1VSma8cHxmPafjg3bjdWVSdIydiALNVb9?usp=sharing.
+* wideresnet/test.pkl contains the features of 20 novel classes of mini-ImageNet.
+* densenet-m/test.pkl contains the feature of 20 novel classes of mini-ImageNet.
+* densent-t/test.pkl contains the feature 160 novel classes of tiered-ImageNet.
 
 
 ### 3. Evaluate the correlations between metrics and the generalization performance
