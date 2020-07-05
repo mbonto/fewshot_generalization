@@ -15,25 +15,36 @@ In the context of few-shot learning, one cannot evaluate generalization using va
 - Pytorch >= 1.2
 
 ### 2. Download Datasets
+Our code is built upon the pretrained backbones of [SimpleShot: Revisiting Nearest-Neighbor Classification for Few-Shot Learning](https://arxiv.org/pdf/1911.04623.pdf) (a) and [Charting the Right Manifold: Manifold Mixup for Few-shot Learning](https://openaccess.thecvf.com/content_WACV_2020/papers/Mangla_Charting_the_Right_Manifold_Manifold_Mixup_for_Few-shot_Learning_WACV_2020_paper.pdf) (b).
 
-The datasets should be download at TODO
+We consider three pretrained backbones.
+**wideresnet** -- Wide Residual Network trained on mini-ImageNet from (b).
+**densenet-m** -- Dense Network trained on mini-ImageNet from (a).
+**densenet-t** -- Dense Network trained on tiered-ImageNet from (a).
 
-The "features" folder should be placed at the root of the project.  
+We use these backbones to extract features of new data samples. The features of the following classes can be downloaded from https://drive.google.com/drive/folders/1VSma8cHxmPafjg3bjdWVSdIydiALNVb9?usp=sharing.
+wideresnet/test.pkl contains the features of 20 novel classes of mini-ImageNet.
+densenet-m/test.pkl contains the feature of 20 novel classes of mini-ImageNet.
+densent-t/test.pkl contains the feature 160 novel classes of tiered-ImageNet.
 
-### 3. Download Pretrained Models
-Our code is built upon the trained models of [SimpleShot: Revisiting Nearest-Neighbor Classification for Few-Shot Learning](https://arxiv.org/pdf/1911.04623.pdf) and [Charting the Right Manifold: Manifold Mixup for Few-shot Learning](https://openaccess.thecvf.com/content_WACV_2020/papers/Mangla_Charting_the_Right_Manifold_Manifold_Mixup_for_Few-shot_Learning_WACV_2020_paper.pdf).
 
-### 4. Evaluate the correlation between metrics and the generalization performance
+### 3. Evaluate the correlations between metrics and the generalization performance
+To compute the correlations in different settings, you can run the following commands.
+
 #### a. Supervised setting
+```
+python correlation.py --setting supervised --model [wideresnet, densenet-t] --n_way [number of classes] --n_shot [number of labeled samples] --n_query [number of test samples/unlabeled samples] --n_run [number of generated tasks]
+```
 #### b. Semi-supervised setting
+```
+python correlation.py --setting semi-supervised --model [wideresnet, densenet-t] --n_way [number of classes] --n_shot [number of labeled samples] --n_query [number of test samples/unlabeled samples] --n_run [number of generated tasks]
+```
 #### c. Unsupervised setting
+```
+python correlation.py --setting unsupervised --model [wideresnet, densenet-t] --n_way [number of classes] --n_shot [number of labeled samples] --n_query [number of test samples/unlabeled samples] --n_run [number of generated tasks]
+```
 
-### 5. Predict the generalization performance from metrics
-#### a. Supervised setting
-#### b. Semi-supervised setting
-#### c. Unsupervised setting
-
-### 6. Case study on mini-ImageNet
+### 4. Case study on mini-ImageNet
 #### Dependencies
 Numerous dependencies are required, in addition to Python and Pytorch:
 ```
@@ -45,25 +56,25 @@ scikit-learn >= 0.21
 ```
 
 #### Generate the graphs
-The code to generate the graph on densenet-m backbone with novel split is:
+The code to generate the graph of novel classes with densenet-m is:
 ```
-python3 main_smooth --mode=monitoring_volume --dataset=densenet-m-novel --n_way=2
-```
-
-The dot files will be produced and store in `graphs` folder.  
-To compute the correlation between the edge weights and the accuracy of logistic regression:
-```
-python3 main_smooth --mode=monitoring_volume --dataset=densenet-m-base --dot-name=graphs/louvain_dendrogram_communities_1_20.dot --n_way=5 --n_shot=5 --n_val=595
+python main_smooth --mode=monitoring_volume --dataset=densenet-m-novel --n_way=2
 ```
 
-For the corresponding bipartite graph:
+The dot files are produced and stored in `graphs` folder.  
+To compute the correlation between the edge weights and the accuracy of a logistic regression:
 ```
-python3 main_smooth --mode=monitoring_volume --dataset=densenet-m-base\&densenet-m-novel --n_way=2
+python main_smooth --mode=monitoring_volume --dataset=densenet-m-base --dot-name=graphs/louvain_dendrogram_communities_1_20.dot --n_way=5 --n_shot=5 --n_val=595
 ```
 
-To compute corelation between the edges of two graphs:
+The code to generate the bipartite graph is:
 ```
-python3 dot_correlation --graph_name_1=pathdot1 --graph_name_2=pathdot2
+python main_smooth --mode=monitoring_volume --dataset=densenet-m-base\&densenet-m-novel --n_way=2
+```
+
+To compute the correlations between the edges of two graphs:
+```
+python dot_correlation --graph_name_1=pathdot1 --graph_name_2=pathdot2
 ```
 
 ## Contact
