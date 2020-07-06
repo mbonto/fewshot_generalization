@@ -14,14 +14,14 @@ import networkx as nx
 import community as louvain
 import networkx.algorithms.community as commu
 from sklearn import manifold
-from diffusion_graph import edges_from_loss_fn, cosine_loss
-from loaders import get_all_pairs_datasets
-from loaders import split_train_test
-from loaders import get_train_test_datasets_labels
-from loaders import get_dataset_from_datapath
-from loaders import get_labels_stats
-from classifiers import features_classification
 from tqdm import tqdm
+from .diffusion_graph import edges_from_loss_fn, cosine_loss
+from .loaders import get_all_pairs_datasets
+from .loaders import split_train_test
+from .loaders import get_train_test_datasets_labels
+from .loaders import get_dataset_from_datapath
+from .loaders import get_labels_stats
+from .classifiers import features_classification
 
 
 def connect_parts_labels(recorder, graph, part_a, part_b, labels, label_0, label_1):

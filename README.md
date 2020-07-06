@@ -47,23 +47,23 @@ scikit-learn >= 0.21
 #### Generate the graphs
 The code to generate the graph on densenet-m backbone with novel split is:
 ```
-python3 main_smooth --mode=monitoring_volume --dataset=densenet-m-novel --n_way=2
+python3 main_smooth.py --mode=monitoring_volume --dataset=densenet-m-novel --n_way=2
 ```
 
 The dot files will be produced and store in `graphs` folder.  
 To compute the correlation between the edge weights and the accuracy of logistic regression:
 ```
-python3 main_smooth --mode=monitoring_volume --dataset=densenet-m-base --dot-name=graphs/louvain_dendrogram_communities_1_20.dot --n_way=5 --n_shot=5 --n_val=595
+python3 main_smooth.py --mode=monitoring_volume --dataset=densenet-m-base --dot-name=graphs/louvain_dendrogram_communities_1_20.dot --n_way=5 --n_shot=5 --n_val=595
 ```
 
 For the corresponding bipartite graph:
 ```
-python3 main_smooth --mode=monitoring_volume --dataset=densenet-m-base\&densenet-m-novel --n_way=2
+python3 main_smooth.py --mode=monitoring_volume --dataset=densenet-m-base\&densenet-m-novel --n_way=2
 ```
 
 To compute corelation between the edges of two graphs:
 ```
-python3 dot_correlation --graph_name_1=pathdot1 --graph_name_2=pathdot2
+python3 dot_correlation.py --graph_name_1=pathdot1 --graph_name_2=pathdot2
 ```
 
 ## Contact

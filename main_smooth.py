@@ -5,17 +5,16 @@ import os
 import torch
 import matplotlib
 import matplotlib.pyplot as plt
-from monitoring import monitore_volume, monitore_communities, monitore_regression, monitore_arena
-from parse_grid import get_grid_search_params, parse_args
+from case_study_toolbox import monitore_volume, monitore_communities, monitore_regression, monitore_arena
+from case_study_toolbox import get_grid_search_params, parse_args
 
 
-def correlation_grid_search(n_dataset, data_path, grid_search_params):
+def correlation_grid_search(data_path, grid_search_params):
     vars_corr = [('test_acc_orig', 'volume_error')]
     print(grid_search_params.get_constant_keys())
     print('')
     for param_num, params in enumerate(grid_search_params.get_params()):
-        if params.training_type != 'test_baseline':
-            print(grid_search_params.get_variable_keys(params))
+        print(grid_search_params.get_variable_keys(params))
         measures = ['louvain_dendrogram', 'baseline', 'arena']
         if params.mode == 'monitoring_volume' and params.intersection_measure in measures:
             if params.intersection_measure == 'louvain_dendrogram':
@@ -34,7 +33,6 @@ def get_num_tests(training_type):
 if __name__ == '__main__':
     modes = ['monitoring_volume']
     args = parse_args(modes)
-    n_dataset = get_num_tests(args.training_type)
     data_paths = {'densenet-m-base':'features/densenet-m/train.pkl',
                   'densenet-m-val':'features/densenet-m/val.pkl',
                   'densenet-m-novel':'features/densenet-m/test.pkl',
@@ -49,8 +47,8 @@ if __name__ == '__main__':
     to_print = args.mode, args.classifier, n_way, n_val, n_shot, data_path
     print('mode=%s classifier=%s n_way=%d n_val=%d n_shot=%d datapath=%s'%to_print)
     if args.mode in modes:
-        grid_search_params = get_grid_search_params(args.training_type, args.mode, args.classifier,
+        grid_search_params = get_grid_search_params(args.mode, args.classifier,
                                                     n_way, n_val, n_shot, args.dataset, args.dot_name, args.arena)
-        correlation_grid_search(n_dataset, data_path, grid_search_params)
+        correlation_grid_search(data_path, grid_search_params)
     else:
         print('Bad experience name')

@@ -1,15 +1,13 @@
 import argparse
-from utils import GridSearch
+from .utils import GridSearch
 
-def get_grid_search_params(training_type, mode, classifier, n_way, n_val, n_shot, dataset, dot_name, arena):
+def get_grid_search_params(mode, classifier, n_way, n_val, n_shot, dataset, dot_name, arena):
     grid = GridSearch()
     grid.add_range('dataset', [dataset])
-    grid.add_range('training_type', [training_type])
     grid.add_range('mode', [mode])
     grid.add_range('n_way', [n_way])
     grid.add_range('n_val', [n_val])
     grid.add_range('n_shot', [n_shot])
-    grid.add_range('yuqing_version', [yuqing_version])
     if mode == 'monitoring_volume':
         grid.add_range('num_neighbors', [20])
         grid.add_range('regular', [False])
@@ -48,7 +46,4 @@ def parse_args(modes):
     parser.add_argument('--n_shot', default=5, type=int, help='number of training examples.')
     parser.add_argument('--dot_name', default='densenet-m/novel/louvain_dendrogram_communities_1_20.dot')
     parser.add_argument('--arena', action='store_true')
-    sanity_check_parser = parser.add_mutually_exclusive_group(required=True)
-    sanity_check_parser.add_argument('--single', dest='training_type', action='store_const', const='single')
-    parser.set_defaults(training_type='single')
     return parser.parse_args()

@@ -4,9 +4,9 @@ import torch
 import torch.nn as nn
 import numpy as np
 import pygsp
-from tqdm import tqdm
-from utils import get_device
 import scipy
+from tqdm import tqdm
+from .utils import get_device
 
 
 class logistic_regression(nn.Module):

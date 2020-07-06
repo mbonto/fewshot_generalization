@@ -4,7 +4,6 @@ import collections
 import pickle
 import torch
 import numpy as np
-from datasets import normalize
 
 
 DEVICE = 'GPU'

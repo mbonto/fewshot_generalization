@@ -2,10 +2,9 @@ import itertools
 import sklearn.decomposition
 import torch
 import numpy as np
-from latent_graph import embed_into_graph
-from classifiers import train_logistic_regression
-from utils import get_device
 from pygsp import graphs, filters, learning
+from .classifiers import train_logistic_regression
+from .utils import get_device
 
 
 def cosine_loss(z_latent, bad_edges, reduce=True, memory_light=False):
