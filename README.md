@@ -2,7 +2,7 @@
 
 This repository contains the code of the experiments performed in the following paper
 
-[Predicting the Accuracy of a Few-Shot Classifier]()
+[Predicting the Accuracy of a Few-Shot Classifier](https://arxiv.org/pdf/2007.04238.pdf)
 
 by Myriam Bontonou, Louis Bethune and Vincent Gripon
 
